@@ -17,8 +17,19 @@ public class StreamAPIImpl {
         Stream <Integer> integerStream = Stream.iterate(1, n-> n+1).limit(list.size());
         integerStream.forEach(System.out::println);
 
-        Stream.generate(()->"peace").limit(list.size()).forEach(System.out::println);
+        Stream.generate(Math::random).limit(list.size()).forEach(System.out::println);
 
-
+        List<Integer> integerList = Arrays.asList(9,55,34,78,2,0,98,4,29,78,2,0,98,44);
+        integerList
+                .stream()
+                .filter(n -> n % 2 == 0)
+                .toList()
+                .stream()
+                .map(n -> n/2)
+                .toList()
+                .stream()
+                .distinct()
+                .sorted((x,y) -> y-x)
+                .forEach(System.out::println);
     }
 }
